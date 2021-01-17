@@ -50,7 +50,7 @@ function buildStringFormat() {
 }
 
 function getSelectedFromPreview() {
-    const cryptoPreview = document.getElementsByClassName('touchbar-element crypto');
+    const cryptoPreview = document.getElementsByClassName('touchbar-widget crypto');
 
     let selectedCryptos = [];
 
@@ -121,7 +121,7 @@ function addCrypto(event) {
             touchArea = document.getElementById('crypto-touchbar-area');
 
         cryptoTouch.setAttribute('id', target.dataset.ticker + '-touch');
-        cryptoTouch.className = 'touchbar-element crypto';
+        cryptoTouch.className = 'touchbar-widget crypto';
         cryptoTouch.dataset.ticker = target.dataset.ticker;
 
         cryptoTouch.style.backgroundColor = targetColour.style.backgroundColor;

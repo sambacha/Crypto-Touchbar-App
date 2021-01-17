@@ -51,19 +51,25 @@
 <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
         <section id="main_content" class="inner">
-            <div class="touchbar-base">
-                <div class="touchbar-element-left">
-                    <div class="touchbar-element"><span>esc</span></div>
+            
+            <!-- Touchbar -->
+            <div class="touchbar" id="touchbar">
+                <div class="touchbar-left" id="touchbar-left">
+                    <!-- ESC Widget-->
+                    <div class="touchbar-widget esc" id="widget-esc">esc</div>
                 </div>
-                <div id="crypto-touchbar-area" class="touchbar-element-middle">
-                    <!-- Generated Crypto Elements to go here -->
+                <div class="touchbar-middle" id="crypto-touchbar-area">
+                    <!-- Crypto Widgets -->
+                    <!--<div class="touchbar-widget crypto">placeholder</div>-->
                 </div>
-                <div class="touchbar-element-right">
-                    <div class="touchbar-element volume"><span class="icon"></span></div>
-                    <div class="touchbar-element mute"><span class="icon"></span></div>
-                    <div class="touchbar-element siri"><span class="icon"></span></div>
+                <div class="touchbar-right" id="touchbar-right">
+                    <!-- Siri Widget -->
+                    <div class="touchbar-widget" id="widget-siri">
+                        <span class="icon siri"></span>
+                    </div>
                 </div>
             </div>
+            <!-- End Touchbar-->
 
             
             <form id="form">
