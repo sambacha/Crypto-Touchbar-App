@@ -71,27 +71,55 @@
             </div>
             <!-- End Touchbar-->
 
-            
-            <form id="form">
-                <span>FIAT Currency</span>
-                <select id="fiat">
-                </select>
-
-                <br>
-                <br>
-
-                <span>Crypto Currencies </span><span style="font-size: 10px">(icons available for some)</span>
-                <br>
-                <div id="coins">
-
-                </div>
-
-                <br>
-                <span>Add Other Coins</span>
-                <select class="form-control" multiple name="currency-choices" id="dynamic-coinlist">
-                </select>
-
-            </form>
+            <!-- Crypto Widgets Customization -->
+            <div id="widgets-customization">     
+                <form id="form">
+                    <div id="crypto-currency">
+                        Currency
+                        <select id="currency-selector">
+                            <option value="AED">United Arab Emirates Dirham</option>
+                            <option value="AUD">Australian Dollar</option>
+                            <option value="BRL">Brazilian Real</option>
+                            <option value="BTC">Bitcoin</option>
+                            <option value="CAD">Canadian Dollar</option>
+                            <option value="CHF">Swiss Franc</option>
+                            <option value="CNY">Renminbi - Chinese Yuan</option>
+                            <option value="CZK">Czech Koruna</option>
+                            <option value="DKK">Danish Krone</option>
+                            <option value="EUR">Euro</option>
+                            <option value="GBP">Pound Sterling</option>
+                            <option value="GOLD">Gold</option>
+                            <option value="HKD">Hong Kong Dollar</option>
+                            <option value="INR">Indian Rupee</option>
+                            <option value="JPY">Japanese Yen</option>
+                            <option value="KRW">South Korean Won</option>
+                            <option value="MXN">Mexican Peso</option>
+                            <option value="NOK">Norwegian Krone</option>
+                            <option value="PLN">Polish Złoty</option>
+                            <option value="PHP">Philippine Piso</option>
+                            <option value="RON">Romanian Leu</option>
+                            <option value="RUB">Russian Ruble</option>
+                            <option value="SEK">Swedish Krona</option>
+                            <option value="SGD">Singapore Dollar</option>
+                            <option value="USD" selected>US Dollar</option>
+                            <option value="VEF">Venezuelan Bolívar</option>
+                            <option value="ZAR">South African Rand</option>
+                        </select>
+                    </div>
+                    <div id="crypto-add">
+                        <span>Add Other Coins</span>
+                        <select class="form-control" multiple name="currency-choices" id="dynamic-coinlist"></select>
+                    </div>
+                    <div id="crypto-choose">
+                        Crypto Currencies
+                        <div id="coins">
+                            
+                        </div>
+                        <span style="font-size: 10px">*(icons available for some)</span>
+                    </div>
+                </form>
+            </div>
+            <!-- End Crypto Widgets Customization -->
 
             <br>
 

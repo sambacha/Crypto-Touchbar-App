@@ -92,13 +92,9 @@ function updatePreviewFiat() {
     });
 }
 
-function getSelectedFiatOption() {
-    const fiat = document.getElementById('fiat');
-    return fiat.options[fiat.selectedIndex].value;
-}
-
 function getSelectedFiatValueObject() {
-    const selectedOp = getSelectedFiatOption();
+    // Get selected currency option
+    const selectedOp = document.getElementById("currency-selector").selectedOptions[0].value;
     return getSelectedValue(new fiatJSON.data(), 'ticker', selectedOp)[0];
 }
 
@@ -281,16 +277,9 @@ function loadData() {
     };
     xhr.send();
 
-    const dropdown = document.getElementById('fiat');
-
-    dropdown.addEventListener('change', updatePreviewFiat);
-
-    new fiatJSON.data().forEach((currency) => {
-        let option = document.createElement('option');
-        option.value = currency.ticker;
-        option.innerHTML = currency.name;
-        dropdown.appendChild(option);
-    });
+    // Currency dropdown menu
+    document.getElementById('currency-selector')
+            .addEventListener('change', updatePreviewFiat);
 
     // enable colour picker on dynamically generated inputs
     jscolor.installByClassName('jscolor');
