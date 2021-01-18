@@ -20,7 +20,7 @@ function getSelectedValues() {
         percentageRound: document.querySelector('input[name="percentage-round"]:checked').dataset.count,
         refreshTimer: document.getElementById('refreshInterval').value,
         groupBool: document.getElementById('groupcheckbox').checked,
-        apiSelector: document.querySelector('input[name="api-type"]:checked'),
+        apiSelector: "live",
         formatSelector: document.querySelector('input[name="variance-type"]:checked').dataset.variance,
         dateTimeSelector: document.getElementById('flatpicker-output'),
         dateTimeSelectorString: document.getElementById('flatpicker-output-string'),
@@ -284,26 +284,6 @@ function loadData() {
     // enable colour picker on dynamically generated inputs
     jscolor.installByClassName('jscolor');
 
-
-    // Flatpickr - https://github.com/flatpickr/flatpickr
-    
-    let flatpickrOutput = document.getElementById('flatpicker-output'),
-    flatpickerOutputString = document.getElementById('flatpicker-output-string');
-
-    let datetimepicker = flatpickr("#flatpickr", {
-        enableTime: true,
-        dateFormat: 'm/d/Y at h:i K',
-        onChange: dates => {
-            flatpickrOutput.value = dates[0].getTime()/1000;
-            flatpickerOutputString.value = datetimepicker.formatDate(dates[0], 'm/d/Y at h:i K');
-        }
-    });
-
-    let minutePicker = document.getElementsByClassName('flatpickr-minute')[0];
-    minutePicker.setAttribute('step', '0');
-    minutePicker.setAttribute('max', '0');
-    minutePicker.setAttribute('min', '0');
-
     // events for on change of searchbox input
     let dynamicCoinList = document.getElementById('dynamic-coinlist');
     dynamicCoinList.addEventListener('addItem', function(event) {
@@ -320,34 +300,4 @@ function loadData() {
         removeCustomCoin(event.detail);
     });
 
-    // event for historical price selection - force enable group
-    let groupSelect = document.getElementById('groupcheckbox');
-    let datePicker = document.getElementById('flatpickr');
-    let historicalRadio = document.getElementById('historical-price');
-    let liveRadio = document.getElementById('live-price');
-
-    historicalRadio.addEventListener('change', function(event) {
-        groupSelect.checked = true;
-        groupSelect.disabled = true;
-        datePicker.style.display = 'block';
-        
-        let ele = document.getElementsByName("variance-type");
-        for(let i=0;i<ele.length;i++) {
-           ele[i].checked = false;
-           ele[i].disabled = true;
-        }
-        document.getElementById('no-trend').checked = true;
-
-    });
-   
-    liveRadio.addEventListener('change', function(event) {
-        groupSelect.checked = false;
-        groupSelect.disabled = false;
-        datePicker.style.display = 'none';
-
-        let ele = document.getElementsByName("variance-type");
-        for(let i=0;i<ele.length;i++) {
-           ele[i].disabled = false;
-        }
-    });    
 }
