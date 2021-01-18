@@ -22,8 +22,6 @@ function getSelectedValues() {
         groupBool: document.getElementById('groupcheckbox').checked,
         apiSelector: "live",
         formatSelector: document.querySelector('input[name="variance-type"]:checked').dataset.variance,
-        dateTimeSelector: document.getElementById('flatpicker-output'),
-        dateTimeSelectorString: document.getElementById('flatpicker-output-string'),
         userPercentageModifer: parseFloat(document.getElementById('user-percentage').value / 100),
         cacheBool: document.getElementById('cachecheckbox').checked
     }

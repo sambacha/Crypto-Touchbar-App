@@ -7,8 +7,7 @@ function exportTemplate(el, method){
     let selectedValues = Page.getSelectedValues(),
         selectedFiatObj = selectedValues.selectedFiatObj,
         selection = selectedValues.selectedCoins,
-        api_type = "live",
-        dateTimeSelector = selectedValues.dateTimeSelector;
+        api_type = "live";
 
     if (selection.length == 0){
         alert('No coins selected');
