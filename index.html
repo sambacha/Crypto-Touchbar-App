@@ -74,40 +74,8 @@
             <!-- Crypto Widgets Customization -->
             <div id="widgets-customization">
                 <form id="form">
-                    <div id="crypto-currency">
-                        Currency
-                        <select id="currency-selector">
-                            <option value="AED">(AED) United Arab Emirates Dirham</option>
-                            <option value="AUD">(AUD) Australian Dollar</option>
-                            <option value="BRL">(BRL) Brazilian Real</option>
-                            <option value="BTC">(BTC) Bitcoin</option>
-                            <option value="CAD">(CAD) Canadian Dollar</option>
-                            <option value="CHF">(CHF) Swiss Franc</option>
-                            <option value="CNY">(CNY) Renminbi Chinese Yuan</option>
-                            <option value="CZK">(CZK) Czech Koruna</option>
-                            <option value="DKK">(DKK) Danish Krone</option>
-                            <option value="EUR">(EUR) Euro</option>
-                            <option value="GBP">(GBP) Pound Sterling</option>
-                            <option value="GOLD">(GOLD) Gold</option>
-                            <option value="HKD">(HKD) Hong Kong Dollar</option>
-                            <option value="INR">(INR) Indian Rupee</option>
-                            <option value="JPY">(JPY) Japanese Yen</option>
-                            <option value="KRW">(KRW) South Korean Won</option>
-                            <option value="MXN">(MXN) Mexican Peso</option>
-                            <option value="NOK">(NOK) Norwegian Krone</option>
-                            <option value="PLN">(PLN) Polish Zloty</option>
-                            <option value="PHP">(PHP) Philippine Piso</option>
-                            <option value="RON">(RON) Romanian Leu</option>
-                            <option value="RUB">(RUB) Russian Ruble</option>
-                            <option value="SEK">(SEK) Swedish Krona</option>
-                            <option value="SGD">(SGD) Singapore Dollar</option>
-                            <option value="USD" selected>(USD) US Dollar</option>
-                            <option value="VEF">(VEF) Venezuelan Bolívar</option>
-                            <option value="ZAR">(ZAR) South African Rand</option>
-                        </select>
-                    </div>
                     <div id="crypto-add">
-                        Cryptos
+                        <h3>Choose your Cryptos</h3>
                         <!-- Substitute with a no-enter search bar -->
                         <select class="form-control" multiple name="currency-choices" id="dynamic-coinlist"></select>
                     </div>
@@ -123,32 +91,55 @@
             <div id="user-options">
                 <form id="useroptions">    
                     <div id="formattoptions">
+                        <h3>Customize your Crypto Touchbar</h3>
                         <h4>Options</h4>
-                        <br>
-                        <div>
-                            <span>Refresh Interval:</span>
-                            <select id="refreshInterval">
-                                <option value="10">10</option>
-                                <option value="30">30</option>
-                                <option value="60" selected>60</option>
-                                <option value="90">90</option>
-                                <option value="120">120</option>
+                        <div id="crypto-currency">
+                            <span>Currency</span>
+                            <select id="currency-selector">
+                                <option value="AED">(AED) United Arab Emirates Dirham</option>
+                                <option value="AUD">(AUD) Australian Dollar</option>
+                                <option value="BRL">(BRL) Brazilian Real</option>
+                                <option value="BTC">(BTC) Bitcoin</option>
+                                <option value="CAD">(CAD) Canadian Dollar</option>
+                                <option value="CHF">(CHF) Swiss Franc</option>
+                                <option value="CNY">(CNY) Renminbi Chinese Yuan</option>
+                                <option value="CZK">(CZK) Czech Koruna</option>
+                                <option value="DKK">(DKK) Danish Krone</option>
+                                <option value="EUR">(EUR) Euro</option>
+                                <option value="GBP">(GBP) Pound Sterling</option>
+                                <option value="GOLD">(GOLD) Gold</option>
+                                <option value="HKD">(HKD) Hong Kong Dollar</option>
+                                <option value="INR">(INR) Indian Rupee</option>
+                                <option value="JPY">(JPY) Japanese Yen</option>
+                                <option value="KRW">(KRW) South Korean Won</option>
+                                <option value="MXN">(MXN) Mexican Peso</option>
+                                <option value="NOK">(NOK) Norwegian Krone</option>
+                                <option value="PLN">(PLN) Polish Zloty</option>
+                                <option value="PHP">(PHP) Philippine Piso</option>
+                                <option value="RON">(RON) Romanian Leu</option>
+                                <option value="RUB">(RUB) Russian Ruble</option>
+                                <option value="SEK">(SEK) Swedish Krona</option>
+                                <option value="SGD">(SGD) Singapore Dollar</option>
+                                <option value="USD" selected>(USD) US Dollar</option>
+                                <option value="VEF">(VEF) Venezuelan Bolívar</option>
+                                <option value="ZAR">(ZAR) South African Rand</option>
                             </select>
-                            <span>s</span>
                         </div>
                         <div id="grouptoggle">
                             <input id="groupcheckbox" type="checkbox">
-                            <label for="groupcheckbox">Group crypto elements under one button</label>
+                            <label for="groupcheckbox">Group crypto widgets under one button</label>
                         </div>
                         <div id="cacheToggle">
                             <input id="cachecheckbox" type="checkbox">
                             <label for="cachecheckbox">Cache results for offline viewing</label>
                         </div>
+                        
                         <div id="FormatOptions">
                             <input id="comma-separate" type="checkbox">
                             <label for="comma-separate">Separate thousands with commas</label>
                             <br>
                             <span>Number of decimals: </span>
+                            <!-- Change to Dropdown menu -->
                             <input id="zero-place" type="radio" name="decimal-count" data-count="0">
                             <label for="zero-place">0</label>
                             <input id="one-place" type="radio" name="decimal-count" data-count="1">
@@ -164,10 +155,21 @@
                             <input id="infinite-place" type="radio" name="decimal-count" data-count="∞" checked>
                             <label for="infinite-place">∞</label>
                         </div>
-                        <br>
+                        <div>
+                            <!-- Change to Input box-->
+                            <span>Refresh Interval:</span>
+                            <select id="refreshInterval">
+                                <option value="10">10</option>
+                                <option value="30">30</option>
+                                <option value="60" selected>60</option>
+                                <option value="90">90</option>
+                                <option value="120">120</option>
+                            </select>
+                            <span>s</span>
+                        </div>
                         
                         <div id="varianceoptions">
-                            <h4>Additional Indicators</h4>
+                            <h4>Indicators</h4>
                             <h5>Simple</h5>
                             <input id="no-trend" type="radio" name="variance-type" data-variance="no" checked>
                             <label for="no-trend">No indicator</label>
@@ -175,8 +177,10 @@
                             <input id="simple-trend" type="radio" name="variance-type" data-variance="simple">
                             <label for="simple-trend">Arrow indicator based on opening ( ▲/▼ )</label>
                             <br>
+                            <!-- Show only if 'Literal indicators' -->
                             <h5>Literal values</h5>
                             <div>
+                                <!-- Dropdown -->
                                 <span>Number of decimals: </span>
                                 <input id="zero-place" type="radio" name="literal-round" data-count="0" checked>
                                 <label for="zero-place">0</label>
@@ -200,6 +204,7 @@
                             <label for="user-percentage-trend">Relative $ Range based on user percentage (-$000 / +$000)</label>
                             <input id="user-percentage" type="text" value="0" maxlength="4" size="4">%
                             <br>
+                            <!-- Show only if radio 'Percentage indicators' -->
                             <h5>Percentage values</h5>
                             <div>
                                 <span>Number of decimals: </span>
@@ -223,8 +228,7 @@
                     </div>
                 </form>
             </div>
-
-            <br>
+            
             <a id="exportJSON" class="button"><i class="icon-download"></i> download BTT json</a><br>
             <a id="directExportJSON" class="button"><i class="icon-download"></i> direct import to BTT</a><br>
 
