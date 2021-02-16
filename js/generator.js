@@ -54,10 +54,9 @@ function generateJSON(template, cb) {
         coin.BTTOrder = i;
 
         // Get and set element colour
-        let coinColour = document.getElementById(item + '-colour').style.backgroundColor;
-        let rgbVals = coinColour.match(/\d+/g);
-
-        coin.BTTTriggerConfig.BTTTouchBarButtonColor = rgbVals.join(', ') + ', 255';
+        let coinColour = document.getElementById(item + '-colour').jscolor.toRGBString(); // rgb(123,123,123)
+        let rgbVals = coinColour.match(/\d+/g) // [123,123,123]
+        coin.BTTTriggerConfig.BTTTouchBarButtonColor = rgbVals.join(', ') + ', 255'; // "123,123,123,255" 
 
         // Get canvas svg and convert it to png base64 for output to BTT
         let base64PNG = document.getElementById(item).toDataURL('image/png');
