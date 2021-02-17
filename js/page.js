@@ -181,7 +181,7 @@ function addCoin(coinData) {
     colour.className = "jscolor"
     colour.style.width = '20';
     colour.style.height = '20';
-    colour.setAttribute("data-jscolor","{onChange:'updatePreviewColour(this)',value:'"+ coinData.Colour +"'}");
+    colour.setAttribute("data-jscolor","{onChange:'updatePreviewColour(this)',onInput:'updatePreviewColour(this)',value:'"+ coinData.Colour +"'}");
 
     colourSVG.className = "jscolor {onFineChange:'updatePreviewSVGColour(this)',valueElement:null,value:'000000'}";
     colourSVG.style.width = '20';
