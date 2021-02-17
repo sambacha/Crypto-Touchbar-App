@@ -251,24 +251,22 @@
     <script type="text/javascript" src="js/thirdparty/mustache.min.js"></script>
     <script type="text/javascript" src="js/thirdparty/choices-PR325/choices.min.js"></script>
     <script>
-        function updatePreviewColour(elm) {
-            const id = elm.previewElement.id,
-                cryptoColour = document.getElementById(id),
-                cryptoTouch = document.getElementById(id.replace('-colour', '-touch'));
-
-            if (cryptoTouch) {
-                cryptoTouch.style.background = elm.toBackground(); //cryptoColour.style.backgroundColor;
-            }
+        // Update widget background colour
+        function updateWidgetColour(picker) {
+            // Get the widget
+            const cryptoTouch = document.getElementById(
+                picker.previewElement.id.replace('-colour', '-touch'));
+            // Update widget background only if it is visible
+            if (cryptoTouch) cryptoTouch.style.background = picker.toBackground();
         }
 
-        function updatePreviewSVGColour(elm) {
-            const id = elm.styleElement.id,
-                cryptoColour = document.getElementById(id),
-                cryptoTouch = document.getElementById(id.replace('-svg-colour', '-touch-icon'));
-
-            if (cryptoTouch) {
-                cryptoTouch.style.fill = cryptoColour.style.backgroundColor;
-            }
+        // Update widget SVG background color
+        function updateSVGColour(picker) {
+            // Get the widget
+            const cryptoTouch = document.getElementById(
+                picker.previewElement.id.replace('-svg-colour', '-touch-icon'));
+            // Update the widget SVG only if it is visible
+            if (cryptoTouch) cryptoTouch.style.fill = picker.toRGBString();
         }
     </script>
 </body>

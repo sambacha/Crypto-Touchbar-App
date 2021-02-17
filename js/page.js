@@ -59,25 +59,6 @@ function getSelectedFromPreview() {
     return selectedCryptos;
 }
 
-function updatePreviewColour(elm) {
-    const id = elm.styleElement.id,
-        cryptoColour = document.getElementById(id),
-        cryptoTouch = document.getElementById(id.replace('-colour', '-touch'));
-
-    if (cryptoTouch) {
-        cryptoTouch.style.backgroundColor = cryptoColour.style.backgroundColor;
-    }
-}
-
-function updatePreviewSVGColour(elm) {
-    const id = elm.styleElement.id,
-        cryptoColour = document.getElementById(id),
-        cryptoTouch = document.getElementById(id.replace('-svg-colour', '-touch-icon'));
-
-    if (cryptoTouch) {
-        cryptoTouch.style.fill = cryptoColour.style.backgroundColor;
-    }
-}
 function updatePreviewFiat() {
     const selectedFiatObj = getSelectedFiatValueObject(),
         cryptoElements = document.getElementsByClassName('crypto');
@@ -176,17 +157,18 @@ function addCoin(coinData) {
 
     text.setAttribute('for', coinData.Name);
     text.innerHTML = coinData.Name;
-
+    
     colour.id = coinData.Ticker + '-colour';
     colour.className = "jscolor"
     colour.style.width = '20';
     colour.style.height = '20';
-    colour.setAttribute("data-jscolor","{onChange:'updatePreviewColour(this)',onInput:'updatePreviewColour(this)',value:'"+ coinData.Colour +"'}");
+    colour.setAttribute("data-jscolor","{onChange:'updateWidgetColour(this)',onInput:'updateWidgetColour(this)',value:'"+ coinData.Colour +"'}");
 
-    colourSVG.className = "jscolor {onFineChange:'updatePreviewSVGColour(this)',valueElement:null,value:'000000'}";
+    colourSVG.id = coinData.Ticker + '-svg-colour';
+    colourSVG.className = "jscolor";
     colourSVG.style.width = '20';
     colourSVG.style.height = '20';
-    colourSVG.id = coinData.Ticker + '-svg-colour';
+    colourSVG.setAttribute("data-jscolor","{onChange:'updateSVGColour(this)',onInput:'updateSVGColour(this)',value:'000000'}")
 
     icon.className = 'touchbar-crypto-icon';
     icon.setAttribute('src', coinData.Icon);
