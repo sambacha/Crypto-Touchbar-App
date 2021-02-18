@@ -201,45 +201,17 @@ function removeCustomCoin(event) {
 function loadData() {
 
     let dynCoinArr = [];
+    let coinList = sessionStorage.getItem("coinlist");
+    
+    if(coinList){ // Coin list available in cache
+        
+        // Parse cached coin list from JSON
+        dynCoinArr = JSON.parse(sessionStorage.getItem("coinlist"));
 
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://min-api.cryptocompare.com/data/all/coinlist');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        let jsonData = JSON.parse(xhr.responseText);
-  
-        let count = 0;
-        let input = jsonData.Data;
-
-        for (let property in input) {
-            if(input.hasOwnProperty(property)) {
-            let customProperties = {
-                "icon": 'img/TODO.svg',
-                "color": '6CAAE5'
-            };
-            let showTopX = false;
-            let customData = getSelectedValue(new coinJSON.data(), 'Ticker', input[property].Symbol)[0];
-            if (customData) {
-                if (customData.ShowDefault) showTopX = true;
-                customProperties = {
-                    "icon": 'node_modules/cryptocoins-icons/SVG/' + customData.Icon + '.svg',
-                    "color": customData.Colour
-                }
-            }
-            dynCoinArr.push({
-                "value" : input[property].Symbol,
-                "label" : input[property].CoinName,
-                "customProperties" : customProperties,
-                "selected" : showTopX
-            });
-            count++;
-           }
-        }
-
-        let genericExamples = new Choices('#dynamic-coinlist', {
-            placeholderValue: 'Search for a CryptoCurrency ('+count+') supported',
-            searchPlaceholderValue: 'Search for a CryptoCurrency ('+count+') supported',
+        // Create new Choices
+        new Choices('#dynamic-coinlist', {
+            placeholderValue: 'Search for a CryptoCurrency ('+dynCoinArr.length+') supported',
+            searchPlaceholderValue: 'Search for a CryptoCurrency ('+dynCoinArr.length+') supported',
             noResultsText: 'Search returned no results',
             choices: dynCoinArr,
             searchResultLimit: 15,
@@ -250,13 +222,80 @@ function loadData() {
             addItems: true,
             duplicateItems: false,
             removeItemButton: true
-          });
-      }
-      else {
-        console.log('Request failed.  Returned status of ' + xhr.status);
-      }
-    };
-    xhr.send();
+        });
+        
+        // Add default coins (don't know why it doesn't happen by default)
+        dynCoinArr.forEach(function (coinData) {
+            if(coinData.selected) 
+                addCoin({
+                    "Colour" : coinData.customProperties.color,
+                    "Name" : coinData.label,
+                    "Ticker" : coinData.value,
+                    "Icon" : coinData.customProperties.icon
+                });
+        });
+
+    }else{ // No cache available
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://min-api.cryptocompare.com/data/all/coinlist');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                let jsonData = JSON.parse(xhr.responseText);
+        
+                let count = 0;
+                let input = jsonData.Data;
+    
+                for (let property in input) {
+                    if(input.hasOwnProperty(property)) {
+                        let customProperties = {
+                            "icon": 'img/TODO.svg',
+                            "color": '6CAAE5'
+                        };
+                        let showTopX = false;
+                        let customData = getSelectedValue(new coinJSON.data(), 'Ticker', input[property].Symbol)[0];
+                        if (customData) {
+                            if (customData.ShowDefault) showTopX = true;
+                            customProperties = {
+                                "icon": 'node_modules/cryptocoins-icons/SVG/' + customData.Icon + '.svg',
+                                "color": customData.Colour
+                            }
+                        }
+                        dynCoinArr.push({
+                            "value" : input[property].Symbol,
+                            "label" : input[property].CoinName,
+                            "customProperties" : customProperties,
+                            "selected" : showTopX
+                        });
+                        count++;
+                    }
+                }
+    
+                new Choices('#dynamic-coinlist', {
+                    placeholderValue: 'Search for a CryptoCurrency ('+count+') supported',
+                    searchPlaceholderValue: 'Search for a CryptoCurrency ('+count+') supported',
+                    noResultsText: 'Search returned no results',
+                    choices: dynCoinArr,
+                    searchResultLimit: 15,
+                    shouldSort: true,
+                    searchFields: ['label', 'value'],
+                    searchEnabled: true,
+                    searchChoices: true,
+                    addItems: true,
+                    duplicateItems: false,
+                    removeItemButton: true
+                });
+                
+                // Cache coin list in sessionStorage
+                sessionStorage.clear();
+                sessionStorage.setItem("coinlist",JSON.stringify(dynCoinArr));
+            
+            } else {
+                console.log('Request failed.  Returned status of ' + xhr.status);
+            }
+        };
+        xhr.send();
+    }
 
     // Currency dropdown menu
     document.getElementById('currency-selector')
