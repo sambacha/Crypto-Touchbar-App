@@ -236,6 +236,7 @@ function loadData() {
         });
 
     }else{ // No cache available
+        ////./
         let xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://min-api.cryptocompare.com/data/all/coinlist');
         xhr.setRequestHeader('Content-Type', 'application/json');

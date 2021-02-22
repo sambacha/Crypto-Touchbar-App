@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node node_modules/watch-http-server/bin/http-server",
-    "deploy": "node ./deploy.js"
+    "deploy": "node ./deploy.js",
+    "run": "./node_modules/.bin/http-server"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,7 @@
     "choices.js": "^3.0.2",
     "cryptocoins-icons": "^2.7.0",
     "font-awesome-svg-png": "^1.2.2",
-    "watch-http-server": "^0.7.6"
+    "http-server": "^0.12.3"
   },
   "devDependencies": {
     "gh-pages": "^1.1.0"
