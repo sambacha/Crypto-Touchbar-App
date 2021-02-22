@@ -13,6 +13,20 @@ function data() {
 			"ShowDefault": true
 		},
 		{
+			"Name": "SushiSwap",
+			"Ticker": "SUSHI",
+			"Icon": "../../../img/temp/sushi",
+			"Colour": "0E0F23",
+			"ShowDefault": true
+		},
+		{
+			"Name": "Yearn Finance",
+			"Ticker": "YFI",
+			"Icon": "../../../img/temp/yfi",
+			"Colour": "2F80ED",
+			"ShowDefault": true
+		},
+		{
 			"Name": "AudioCoin",
 			"Ticker": "ADC",
 			"Icon": "ADC",
