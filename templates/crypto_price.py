@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Please submit any issues to 
-# https://github.com/chrislennon/Crypto-Touchbar-App/issues 
+# https://github.com/sambacha/Crypto-Touchbar-App/issues 
 
 from json import load
 try:
