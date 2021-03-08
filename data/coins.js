@@ -13,6 +13,20 @@ function data() {
 			"ShowDefault": true
 		},
 		{
+			"Name": "SushiSwap",
+			"Ticker": "SUSHI",
+			"Icon": "../../../img/temp/sushi",
+			"Colour": "0E0F23",
+			"ShowDefault": true
+		},
+		{
+			"Name": "Yearn Finance",
+			"Ticker": "YFI",
+			"Icon": "../../../img/temp/yfi",
+			"Colour": "2F80ED",
+			"ShowDefault": true
+		},
+		{
 			"Name": "AudioCoin",
 			"Ticker": "ADC",
 			"Icon": "ADC",
@@ -239,7 +253,9 @@ function data() {
 			"Name": "Dogecoin",
 			"Ticker": "DOGE",
 			"Icon": "DOGE",
-			"Colour": "B4A146"
+			"Colour": "B4A146",
+			"ShowDefault": true
+			
 		},
 		// E - 5
 		{
@@ -752,8 +768,7 @@ function data() {
 			"Name": "Stellas Lumens",
 			"Ticker": "XLM",
 			"Icon": "STR",
-			"Colour": "FFFFFF",
-			"ShowDefault": true
+			"Colour": "FFFFFF"
 		},
 		{
 			"Name": "Stratis",
@@ -809,7 +824,8 @@ function data() {
 			"Name": "Tether",
 			"Ticker": "USDT",
 			"Icon": "USDT-alt",
-			"Colour": "4F9E7D"
+			"Colour": "4F9E7D",
+			"ShowDefault": true
 		},
 		// V - 5
 		{

@@ -54,10 +54,9 @@ function generateJSON(template, cb) {
         coin.BTTOrder = i;
 
         // Get and set element colour
-        let coinColour = document.getElementById(item + '-colour').style.backgroundColor;
-        let rgbVals = coinColour.match(/\d+/g);
-
-        coin.BTTTriggerConfig.BTTTouchBarButtonColor = rgbVals.join(', ') + ', 255';
+        let coinColour = document.getElementById(item + '-colour').jscolor.toRGBString(); // rgb(123,123,123)
+        let rgbVals = coinColour.match(/\d+/g) // [123,123,123]
+        coin.BTTTriggerConfig.BTTTouchBarButtonColor = rgbVals.join(', ') + ', 255'; // "123,123,123,255" 
 
         // Get canvas svg and convert it to png base64 for output to BTT
         let base64PNG = document.getElementById(item).toDataURL('image/png');
@@ -66,9 +65,6 @@ function generateJSON(template, cb) {
         coin.BTTIconData = base64PNG;
 
         let extraOptions = 'False';
-        if (userData.apiSelector.dataset.apitype == 'historical') {
-            extraOptions = '&limit=1&aggregate=1&toTs=' + userData.dateTimeSelector.value;
-        }
         
         let data = {
             coin_ticker: coin.BTTWidgetName,
@@ -79,7 +75,7 @@ function generateJSON(template, cb) {
             percentageRound: userData.percentageRound,
             percent: userData.userPercentageModifer,
             output_type: userData.formatSelector,
-            apiSelector: userData.apiSelector.dataset.apitype,
+            apiSelector: "live",
             extraOptions: extraOptions,
             offline_cache: userData.cacheBool
         };
@@ -97,11 +93,6 @@ function generateJSON(template, cb) {
         coinArray.push(closeGroup);
         output.BTTPresetContent[0].BTTTriggers[0].BTTAdditionalActions = coinArray;
         output.BTTPresetContent[0].BTTTriggers[0].BTTIconData = userData.selectedFiatObj.icon;
-
-        if (userData.apiSelector.dataset.apitype == 'historical') {
-
-            output.BTTPresetContent[0].BTTTriggers[0].BTTTouchBarButtonName = userData.dateTimeSelectorString.value;
-        }
     }
     else {
         output.BTTPresetContent[0].BTTTriggers = coinArray;

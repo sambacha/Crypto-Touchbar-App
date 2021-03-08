@@ -6,29 +6,29 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node node_modules/watch-http-server/bin/http-server",
-    "deploy": "node ./deploy.js"
+    "deploy": "node ./deploy.js",
+    "run": "./node_modules/.bin/http-server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chrislennon/Crypto-Touchbar-App.git"
+    "url": "git+https://github.com/sambacha/Crypto-Touchbar-App.git"
   },
   "keywords": [
     "cryptocurrency",
     "touchbar",
     "bettertouchtool"
   ],
-  "author": "chrislennon",
+  "author": "sambacha",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chrislennon/Crypto-Touchbar-App/issues"
+    "url": "https://github.com/sambacha/Crypto-Touchbar-App/issues"
   },
-  "homepage": "https://github.com/chrislennon/Crypto-Touchbar-App#readme",
+  "homepage": "https://github.com/sambacha/Crypto-Touchbar-App#readme",
   "dependencies": {
     "choices.js": "^3.0.2",
     "cryptocoins-icons": "^2.7.0",
-    "flatpickr": "^4.1.4",
     "font-awesome-svg-png": "^1.2.2",
-    "watch-http-server": "^0.7.6"
+    "http-server": "^0.12.3"
   },
   "devDependencies": {
     "gh-pages": "^1.1.0"

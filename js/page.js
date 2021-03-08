@@ -20,10 +20,8 @@ function getSelectedValues() {
         percentageRound: document.querySelector('input[name="percentage-round"]:checked').dataset.count,
         refreshTimer: document.getElementById('refreshInterval').value,
         groupBool: document.getElementById('groupcheckbox').checked,
-        apiSelector: document.querySelector('input[name="api-type"]:checked'),
+        apiSelector: "live",
         formatSelector: document.querySelector('input[name="variance-type"]:checked').dataset.variance,
-        dateTimeSelector: document.getElementById('flatpicker-output'),
-        dateTimeSelectorString: document.getElementById('flatpicker-output-string'),
         userPercentageModifer: parseFloat(document.getElementById('user-percentage').value / 100),
         cacheBool: document.getElementById('cachecheckbox').checked
     }
@@ -50,7 +48,7 @@ function buildStringFormat() {
 }
 
 function getSelectedFromPreview() {
-    const cryptoPreview = document.getElementsByClassName('touchbar-element crypto');
+    const cryptoPreview = document.getElementsByClassName('touchbar-widget crypto');
 
     let selectedCryptos = [];
 
@@ -61,25 +59,6 @@ function getSelectedFromPreview() {
     return selectedCryptos;
 }
 
-function updatePreviewColour(elm) {
-    const id = elm.styleElement.id,
-        cryptoColour = document.getElementById(id),
-        cryptoTouch = document.getElementById(id.replace('-colour', '-touch'));
-
-    if (cryptoTouch) {
-        cryptoTouch.style.backgroundColor = cryptoColour.style.backgroundColor;
-    }
-}
-
-function updatePreviewSVGColour(elm) {
-    const id = elm.styleElement.id,
-        cryptoColour = document.getElementById(id),
-        cryptoTouch = document.getElementById(id.replace('-svg-colour', '-touch-icon'));
-
-    if (cryptoTouch) {
-        cryptoTouch.style.fill = cryptoColour.style.backgroundColor;
-    }
-}
 function updatePreviewFiat() {
     const selectedFiatObj = getSelectedFiatValueObject(),
         cryptoElements = document.getElementsByClassName('crypto');
@@ -92,13 +71,9 @@ function updatePreviewFiat() {
     });
 }
 
-function getSelectedFiatOption() {
-    const fiat = document.getElementById('fiat');
-    return fiat.options[fiat.selectedIndex].value;
-}
-
 function getSelectedFiatValueObject() {
-    const selectedOp = getSelectedFiatOption();
+    // Get selected currency option
+    const selectedOp = document.getElementById("currency-selector").selectedOptions[0].value;
     return getSelectedValue(new fiatJSON.data(), 'ticker', selectedOp)[0];
 }
 
@@ -119,12 +94,12 @@ function addCrypto(event) {
             targetColour = document.getElementById(target.dataset.ticker + '-colour'),
             text = document.createElement('span'),
             touchArea = document.getElementById('crypto-touchbar-area');
-
+        
         cryptoTouch.setAttribute('id', target.dataset.ticker + '-touch');
-        cryptoTouch.className = 'touchbar-element crypto';
+        cryptoTouch.className = 'touchbar-widget crypto';
         cryptoTouch.dataset.ticker = target.dataset.ticker;
 
-        cryptoTouch.style.backgroundColor = targetColour.style.backgroundColor;
+        cryptoTouch.style.background = targetColour.jscolor.toBackground(); //targetColour.style.backgroundColor;
         touchArea.appendChild(cryptoTouch);
 
         imgTouch.className = 'svg touchbar-crypto-icon';
@@ -182,16 +157,18 @@ function addCoin(coinData) {
 
     text.setAttribute('for', coinData.Name);
     text.innerHTML = coinData.Name;
-
-    colour.className = "jscolor {onFineChange:'updatePreviewColour(this)',valueElement:null,value:'"+ coinData.Colour +"'}";
+    
+    colour.id = coinData.Ticker + '-colour';
+    colour.className = "jscolor"
     colour.style.width = '20';
     colour.style.height = '20';
-    colour.id = coinData.Ticker + '-colour';
+    colour.setAttribute("data-jscolor","{onChange:'updateWidgetColour(this)',onInput:'updateWidgetColour(this)',value:'"+ coinData.Colour +"'}");
 
-    colourSVG.className = "jscolor {onFineChange:'updatePreviewSVGColour(this)',valueElement:null,value:'000000'}";
+    colourSVG.id = coinData.Ticker + '-svg-colour';
+    colourSVG.className = "jscolor";
     colourSVG.style.width = '20';
     colourSVG.style.height = '20';
-    colourSVG.id = coinData.Ticker + '-svg-colour';
+    colourSVG.setAttribute("data-jscolor","{onChange:'updateSVGColour(this)',onInput:'updateSVGColour(this)',value:'000000'}")
 
     icon.className = 'touchbar-crypto-icon';
     icon.setAttribute('src', coinData.Icon);
@@ -206,7 +183,7 @@ function addCoin(coinData) {
     document.getElementById('coins').appendChild(cryptoSelector);
 
     // Initialise jscolor on new element
-    jscolor.installByClassName('jscolor');
+    jscolor.install();
 
 }
 
@@ -224,45 +201,17 @@ function removeCustomCoin(event) {
 function loadData() {
 
     let dynCoinArr = [];
+    let coinList = sessionStorage.getItem("coinlist");
+    
+    if(coinList){ // Coin list available in cache
+        
+        // Parse cached coin list from JSON
+        dynCoinArr = JSON.parse(sessionStorage.getItem("coinlist"));
 
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://min-api.cryptocompare.com/data/all/coinlist');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        let jsonData = JSON.parse(xhr.responseText);
-  
-        let count = 0;
-        let input = jsonData.Data;
-
-        for (let property in input) {
-            if(input.hasOwnProperty(property)) {
-            let customProperties = {
-                "icon": 'img/TODO.svg',
-                "color": '6CAAE5'
-            };
-            let showTopX = false;
-            let customData = getSelectedValue(new coinJSON.data(), 'Ticker', input[property].Symbol)[0];
-            if (customData) {
-                if (customData.ShowDefault) showTopX = true;
-                customProperties = {
-                    "icon": 'node_modules/cryptocoins-icons/SVG/' + customData.Icon + '.svg',
-                    "color": customData.Colour
-                }
-            }
-            dynCoinArr.push({
-                "value" : input[property].Symbol,
-                "label" : input[property].CoinName,
-                "customProperties" : customProperties,
-                "selected" : showTopX
-            });
-            count++;
-           }
-        }
-
-        let genericExamples = new Choices('#dynamic-coinlist', {
-            placeholderValue: 'Search for a CryptoCurrency ('+count+') supported',
-            searchPlaceholderValue: 'Search for a CryptoCurrency ('+count+') supported',
+        // Create new Choices
+        new Choices('#dynamic-coinlist', {
+            placeholderValue: 'Search for a CryptoCurrency ('+dynCoinArr.length+') supported',
+            searchPlaceholderValue: 'Search for a CryptoCurrency ('+dynCoinArr.length+') supported',
             noResultsText: 'Search returned no results',
             choices: dynCoinArr,
             searchResultLimit: 15,
@@ -273,47 +222,88 @@ function loadData() {
             addItems: true,
             duplicateItems: false,
             removeItemButton: true
-          });
-      }
-      else {
-        console.log('Request failed.  Returned status of ' + xhr.status);
-      }
-    };
-    xhr.send();
+        });
+        
+        // Add default coins (don't know why it doesn't happen by default)
+        dynCoinArr.forEach(function (coinData) {
+            if(coinData.selected) 
+                addCoin({
+                    "Colour" : coinData.customProperties.color,
+                    "Name" : coinData.label,
+                    "Ticker" : coinData.value,
+                    "Icon" : coinData.customProperties.icon
+                });
+        });
 
-    const dropdown = document.getElementById('fiat');
+    }else{ // No cache available
+        ////./
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://min-api.cryptocompare.com/data/all/coinlist');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                let jsonData = JSON.parse(xhr.responseText);
+        
+                let count = 0;
+                let input = jsonData.Data;
+    
+                for (let property in input) {
+                    if(input.hasOwnProperty(property)) {
+                        let customProperties = {
+                            "icon": 'img/TODO.svg',
+                            "color": '6CAAE5'
+                        };
+                        let showTopX = false;
+                        let customData = getSelectedValue(new coinJSON.data(), 'Ticker', input[property].Symbol)[0];
+                        if (customData) {
+                            if (customData.ShowDefault) showTopX = true;
+                            customProperties = {
+                                "icon": 'node_modules/cryptocoins-icons/SVG/' + customData.Icon + '.svg',
+                                "color": customData.Colour
+                            }
+                        }
+                        dynCoinArr.push({
+                            "value" : input[property].Symbol,
+                            "label" : input[property].CoinName,
+                            "customProperties" : customProperties,
+                            "selected" : showTopX
+                        });
+                        count++;
+                    }
+                }
+    
+                new Choices('#dynamic-coinlist', {
+                    placeholderValue: 'Search for a CryptoCurrency ('+count+') supported',
+                    searchPlaceholderValue: 'Search for a CryptoCurrency ('+count+') supported',
+                    noResultsText: 'Search returned no results',
+                    choices: dynCoinArr,
+                    searchResultLimit: 15,
+                    shouldSort: true,
+                    searchFields: ['label', 'value'],
+                    searchEnabled: true,
+                    searchChoices: true,
+                    addItems: true,
+                    duplicateItems: false,
+                    removeItemButton: true
+                });
+                
+                // Cache coin list in sessionStorage
+                sessionStorage.clear();
+                sessionStorage.setItem("coinlist",JSON.stringify(dynCoinArr));
+            
+            } else {
+                console.log('Request failed.  Returned status of ' + xhr.status);
+            }
+        };
+        xhr.send();
+    }
 
-    dropdown.addEventListener('change', updatePreviewFiat);
-
-    new fiatJSON.data().forEach((currency) => {
-        let option = document.createElement('option');
-        option.value = currency.ticker;
-        option.innerHTML = currency.name;
-        dropdown.appendChild(option);
-    });
+    // Currency dropdown menu
+    document.getElementById('currency-selector')
+            .addEventListener('change', updatePreviewFiat);
 
     // enable colour picker on dynamically generated inputs
-    jscolor.installByClassName('jscolor');
-
-
-    // Flatpickr - https://github.com/flatpickr/flatpickr
-    
-    let flatpickrOutput = document.getElementById('flatpicker-output'),
-    flatpickerOutputString = document.getElementById('flatpicker-output-string');
-
-    let datetimepicker = flatpickr("#flatpickr", {
-        enableTime: true,
-        dateFormat: 'm/d/Y at h:i K',
-        onChange: dates => {
-            flatpickrOutput.value = dates[0].getTime()/1000;
-            flatpickerOutputString.value = datetimepicker.formatDate(dates[0], 'm/d/Y at h:i K');
-        }
-    });
-
-    let minutePicker = document.getElementsByClassName('flatpickr-minute')[0];
-    minutePicker.setAttribute('step', '0');
-    minutePicker.setAttribute('max', '0');
-    minutePicker.setAttribute('min', '0');
+    jscolor.install();
 
     // events for on change of searchbox input
     let dynamicCoinList = document.getElementById('dynamic-coinlist');
@@ -331,34 +321,4 @@ function loadData() {
         removeCustomCoin(event.detail);
     });
 
-    // event for historical price selection - force enable group
-    let groupSelect = document.getElementById('groupcheckbox');
-    let datePicker = document.getElementById('flatpickr');
-    let historicalRadio = document.getElementById('historical-price');
-    let liveRadio = document.getElementById('live-price');
-
-    historicalRadio.addEventListener('change', function(event) {
-        groupSelect.checked = true;
-        groupSelect.disabled = true;
-        datePicker.style.display = 'block';
-        
-        let ele = document.getElementsByName("variance-type");
-        for(let i=0;i<ele.length;i++) {
-           ele[i].checked = false;
-           ele[i].disabled = true;
-        }
-        document.getElementById('no-trend').checked = true;
-
-    });
-   
-    liveRadio.addEventListener('change', function(event) {
-        groupSelect.checked = false;
-        groupSelect.disabled = false;
-        datePicker.style.display = 'none';
-
-        let ele = document.getElementsByName("variance-type");
-        for(let i=0;i<ele.length;i++) {
-           ele[i].disabled = false;
-        }
-    });    
 }
