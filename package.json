@@ -5,9 +5,9 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node node_modules/watch-http-server/bin/http-server",
+    "start": "npx http-server",
     "deploy": "node ./deploy.js",
-    "run": "./node_modules/.bin/http-server"
+    "compile": "npx deploy.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   "dependencies": {
     "choices.js": "^3.0.2",
     "cryptocoins-icons": "^2.7.0",
-    "font-awesome-svg-png": "^1.2.2",
+    "font-awesome-svg-png": "git+https://github.com/sambacha/Font-Awesome-SVG-PNG",
     "http-server": "^0.12.3"
   },
   "devDependencies": {
