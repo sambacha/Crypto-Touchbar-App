@@ -1,131 +1,138 @@
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>NFT TouchBar Generator</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="css/gh-pages-slate-stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="js/thirdparty/choices-PR325/choices.min.css">
-
-</head>
-<body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-            <a id="forkme_banner" href="https://github.com/sambacha/Crypto-Touchbar-App">View on GitHub</a>
-
-            <h1 id="project_title">NFT ERC721 TouchBar Generator</h1>
-            <h2 id="project_tagline">Generate NFT touchbar widgets for <a href="https://folivora.ai/">Mac OSX</a>.</h2>
-        </header>
-    </div>
+        <link rel="stylesheet" type="text/css" href="style/normalize.css">
+        <link rel="stylesheet" type="text/css" href="style/styles.css">
+        <link rel="stylesheet" type="text/css" href="style/gh-pages-slate-stylesheet.css">
     
-    <section class="outer">
-        <!-- Nothing to see here -->
-    </section>
-
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        
+        <script type="module" src="js/app.js"></script>
+    
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js" ></script>
+        <script type="text/javascript" src="js/thirdparty/jscolor.min.js"></script>
+        <script type="text/javascript" src="js/thirdparty/rgbcolor.js"></script>
+        <script type="text/javascript" src="js/thirdparty/StackBlur.js"></script>
+        <script type="text/javascript" src="js/thirdparty/canvg.js"></script>
+    
+        <!-- Include Choices CSS -->
+        <link rel="stylesheet" href="js/thirdparty/choices-PR325/choices.min.css">
+        <!-- Include Choices JavaScript -->
+        <script src="js/thirdparty/choices-PR325/choices.min.js"></script>
+    
+        <!-- Include flatpickr datetime selector -->
+    
+        <link rel="stylesheet" href="node_modules/flatpickr/dist/flatpickr.min.css">
+        <script src="node_modules/flatpickr/dist/flatpickr.min.js"></script>
+    
+        <title>Crypto-Touchbar-App</title>
+    </head>
+    
+    <body>
+    
+        <!-- HEADER -->
+        <div id="header_wrap" class="outer">
+                <header class="inner">
+                  <a id="forkme_banner" href="https://github.com/chrislennon/Crypto-Touchbar-App">View on GitHub</a>
+        
+                  <h1 id="project_title">Crypto Touchbar</h1>
+                  <h2 id="project_tagline">Cryptocurrency widgets for <a href="https://www.boastr.net/">BetterTouchTool</a>.</h2>
+                </header>
+            </div>
+        
+            <section class="outer">
+                <!-- Nothing to see here -->
+            </section>
+    
     <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-        <section id="main_content" class="inner">
-            
-            <!-- Touchbar -->
-            <div class="touchbar" id="touchbar">
-                <div class="touchbar-left" id="touchbar-left">
-                    <!-- ESC Widget-->
-                    <div class="touchbar-widget esc" id="widget-esc">esc</div>
-                </div>
-                <div class="touchbar-middle" id="crypto-touchbar-area">
-                    <!-- Crypto Widgets -->
-                    <!--<div class="touchbar-widget crypto">placeholder</div>-->
-                </div>
-                <div class="touchbar-right" id="touchbar-right">
-                    <!-- Siri Widget -->
-                    <div class="touchbar-widget" id="widget-siri">
-                        <span class="icon siri"></span>
+        <div id="main_content_wrap" class="outer">
+            <section id="main_content" class="inner">
+                <div class="touchbar-base">
+                    <div class="touchbar-element-left">
+                        <div class="touchbar-element"><span>esc</span></div>
+                    </div>
+                    <div id="crypto-touchbar-area" class="touchbar-element-middle">
+                        <!-- Generated Crypto Elements to go here -->
+                    </div>
+                    <div class="touchbar-element-right">
+                        <div class="touchbar-element volume"><span class="icon"></span></div>
+                        <div class="touchbar-element mute"><span class="icon"></span></div>
+                        <div class="touchbar-element siri"><span class="icon"></span></div>
                     </div>
                 </div>
-            </div>
-            <!-- End Touchbar-->
-
-            <!-- Crypto Widgets Customization -->
-            <div id="widgets-customization">
+    
+                
                 <form id="form">
-                    <div id="crypto-add">
-                        <h3>Choose your NFT Wisely</h3>
-                        <!-- Substitute with a no-enter search bar -->
-                        <!-- Inser a loading animation while parsing -->
-                        <select class="form-control" multiple name="currency-choices" id="dynamic-coinlist" hidden></select>
+                    <span>FIAT Currency</span>
+                    <select id="fiat">
+                    </select>
+    
+                    <br>
+                    <br>
+    
+                    <span>Crypto Currencies </span><span style="font-size: 10px">(icons available for some)</span>
+                    <br>
+                    <div id="coins">
+    
                     </div>
-                    <div id="crypto-choose">
-                        <div id="coins">
-                        </div>
-                        <!-- <span style="font-size: 10px">*(icons available for some)</span> -->
-                    </div>
+    
+                    <br>
+                    <span>Add Other Coins</span>
+                    <select class="form-control" multiple name="currency-choices" id="dynamic-coinlist">
+                    </select>
+    
                 </form>
-            </div>
-            <!-- End Crypto Widgets Customization -->
-            
-            <!-- User options -->
-            <div id="user-options">
-                <form id="useroptions">    
+    
+                <br>
+    
+                <form id="useroptions">
+                    <h4>API selection: </h4>
+                    <br>
+                    <div id="apiselection">
+                        <input id="live-price" type="radio" name="api-type" data-apiType="live" checked>
+                        <label for="live-price">Live</label>
+                        <br>
+                        <input id="historical-price" type="radio" name="api-type" data-apiType="historical" >
+                        <label for="historical-price">Historical</label>
+    
+                        <input id="flatpickr" type="text" placeholder="Select Date/Time.." readonly="readonly" style="width: 200px; display: none;">
+                        <input id="flatpicker-output" type="text" readonly="readonly" style="display: none;">
+                        <input id="flatpicker-output-string" type="text" readonly="readonly" style="display: none;">
+                        <br>
+                        <br>
+                    </div>
+    
                     <div id="formattoptions">
-                        <h3>Customize your Widget</h3>
                         <h4>Options</h4>
-                        <div id="crypto-currency">
-                            <span>Currency</span>
-                            <select id="currency-selector">
-                                <option value="AED">(AED) United Arab Emirates Dirham</option>
-                                <option value="AUD">(AUD) Australian Dollar</option>
-                                <option value="BRL">(BRL) Brazilian Real</option>
-                                <option value="BTC">(BTC) Bitcoin</option>
-                                <option value="CAD">(CAD) Canadian Dollar</option>
-                                <option value="CHF">(CHF) Swiss Franc</option>
-                                <option value="CNY">(CNY) Renminbi Chinese Yuan</option>
-                                <option value="CZK">(CZK) Czech Koruna</option>
-                                <option value="DKK">(DKK) Danish Krone</option>
-                                <option value="EUR">(EUR) Euro</option>
-                                <option value="GBP">(GBP) Pound Sterling</option>
-                                <option value="GOLD">(GOLD) Gold</option>
-                                <option value="HKD">(HKD) Hong Kong Dollar</option>
-                                <option value="INR">(INR) Indian Rupee</option>
-                                <option value="JPY">(JPY) Japanese Yen</option>
-                                <option value="KRW">(KRW) South Korean Won</option>
-                                <option value="MXN">(MXN) Mexican Peso</option>
-                                <option value="NOK">(NOK) Norwegian Krone</option>
-                                <option value="PLN">(PLN) Polish Zloty</option>
-                                <option value="PHP">(PHP) Philippine Piso</option>
-                                <option value="RON">(RON) Romanian Leu</option>
-                                <option value="RUB">(RUB) Russian Ruble</option>
-                                <option value="SEK">(SEK) Swedish Krona</option>
-                                <option value="SGD">(SGD) Singapore Dollar</option>
-                                <option value="USD" selected>(USD) US Dollar</option>
-                                <option value="VEF">(VEF) Venezuelan Bolívar</option>
-                                <option value="ZAR">(ZAR) South African Rand</option>
+                        <br>
+                        <div>
+                            <span>Refresh Interval:</span>
+                            <select id="refreshInterval">
+                                <option value="10">10</option>
+                                <option value="30">30</option>
+                                <option value="60" selected>60</option>
+                                <option value="90">90</option>
+                                <option value="120">120</option>
                             </select>
+                            <span>s</span>
                         </div>
                         <div id="grouptoggle">
                             <input id="groupcheckbox" type="checkbox">
-                            <label for="groupcheckbox">Group similar NFT assets under one button</label>
+                            <label for="groupcheckbox">Group crypto elements under one button</label>
                         </div>
                         <div id="cacheToggle">
                             <input id="cachecheckbox" type="checkbox">
                             <label for="cachecheckbox">Cache results for offline viewing</label>
                         </div>
-                        
                         <div id="FormatOptions">
                             <input id="comma-separate" type="checkbox">
                             <label for="comma-separate">Separate thousands with commas</label>
                             <br>
                             <span>Number of decimals: </span>
-                            <!-- Change to Dropdown menu -->
                             <input id="zero-place" type="radio" name="decimal-count" data-count="0">
                             <label for="zero-place">0</label>
                             <input id="one-place" type="radio" name="decimal-count" data-count="1">
@@ -141,21 +148,10 @@
                             <input id="infinite-place" type="radio" name="decimal-count" data-count="∞" checked>
                             <label for="infinite-place">∞</label>
                         </div>
-                        <div>
-                            <!-- Change to Input box-->
-                            <span>Refresh Interval:</span>
-                            <select id="refreshInterval">
-                                <option value="10">10</option>
-                                <option value="30">30</option>
-                                <option value="60" selected>60</option>
-                                <option value="90">90</option>
-                                <option value="120">120</option>
-                            </select>
-                            <span>s</span>
-                        </div>
+                        <br>
                         
                         <div id="varianceoptions">
-                            <h4>Indicators</h4>
+                            <h4>Additional Indicators</h4>
                             <h5>Simple</h5>
                             <input id="no-trend" type="radio" name="variance-type" data-variance="no" checked>
                             <label for="no-trend">No indicator</label>
@@ -163,10 +159,8 @@
                             <input id="simple-trend" type="radio" name="variance-type" data-variance="simple">
                             <label for="simple-trend">Arrow indicator based on opening ( ▲/▼ )</label>
                             <br>
-                            <!-- Show only if 'Literal indicators' -->
                             <h5>Literal values</h5>
                             <div>
-                                <!-- Dropdown -->
                                 <span>Number of decimals: </span>
                                 <input id="zero-place" type="radio" name="literal-round" data-count="0" checked>
                                 <label for="zero-place">0</label>
@@ -190,7 +184,6 @@
                             <label for="user-percentage-trend">Relative $ Range based on user percentage (-$000 / +$000)</label>
                             <input id="user-percentage" type="text" value="0" maxlength="4" size="4">%
                             <br>
-                            <!-- Show only if radio 'Percentage indicators' -->
                             <h5>Percentage values</h5>
                             <div>
                                 <span>Number of decimals: </span>
@@ -210,64 +203,37 @@
                             <label for="range-percentage-trend">Relative % Range (-8% / +10%)</label>
                             <br>
                         </div>
+                        
                         <br>
                     </div>
+    
+    
+    
+    
+    
                 </form>
-            </div>
-            <!-- End User options -->
-
-            <!-- Download/Import -->
-            <div id="download">
+    
+                <br>
                 <a id="exportJSON" class="button"><i class="icon-download"></i> download BTT json</a><br>
                 <a id="directExportJSON" class="button"><i class="icon-download"></i> direct import to BTT</a><br>
-            </div>
-            <div id="canvas-area" style="display: none;"></div>
-            <!-- End Download/Import -->
-            
-            <!-- Create a more in depth guide on "How to use" -->
-            <!-- How to -->
-            <div id="BTTinstructions">
-                <span>The json export can be imported using the 'Manage Presets' menu in the bottom left of BetterTouchTool. <br> See <a href="https://github.com/sambacha/Crypto-Touchbar-App#instructions">README</a> for more details.</span>
-            </div>    
-            <!-- End How to -->
-
-        </section>
-    </div>
-
-    <!-- Footer -->
-    <div id="footer_wrap" class="outer">
-        <footer class="inner">
-            <p>Application maintained on <a href="https://github.com/sambacha/Crypto-Touchbar-App">GitHub</a></p>
-        </footer>
-    </div>
-    <!-- End Footer -->
-
-    <!-- JS -->
-    <script type="module" src="js/app.js"></script>
-    <script type="text/javascript" src="js/thirdparty/canvg.js"></script>
-    <script type="text/javascript" src="js/thirdparty/rgbcolor.js"></script>
-    <script type="text/javascript" src="js/thirdparty/StackBlur.js"></script>
-    <script type="text/javascript" src="js/thirdparty/jscolor.min.js"></script>
-    <script type="text/javascript" src="js/thirdparty/mustache.min.js"></script>
-    <script type="text/javascript" src="js/thirdparty/choices-PR325/choices.min.js"></script>
-    <script>
-        // Update widget background colour
-        function updateWidgetColour(picker) {
-            // Get the widget
-            const cryptoTouch = document.getElementById(
-                picker.previewElement.id.replace('-colour', '-touch'));
-            // Update widget background only if it is visible
-            if (cryptoTouch) cryptoTouch.style.background = picker.toBackground();
-        }
-
-        // Update widget SVG background color
-        function updateSVGColour(picker) {
-            // Get the widget
-            const cryptoTouch = document.getElementById(
-                picker.previewElement.id.replace('-svg-colour', '-touch-icon'));
-            // Update the widget SVG only if it is visible
-            if (cryptoTouch) cryptoTouch.style.fill = picker.toRGBString();
-        }
-    </script>
-</body>
-</html>
+    
+                <div id="BTTinstructions">
+                    <span>The json export can be imported using the 'Manage Presets' menu in the bottom left of BetterTouchTool. <br> See <a href="https://github.com/chrislennon/Crypto-Touchbar-App#instructions">README</a> for more details.</span>
+                </div>    
+    
+                <div id="canvas-area" style="display: none;"></div>
+    
+            </section>
+        </div>
+    
+        <!-- FOOTER  -->
+        <div id="footer_wrap" class="outer">
+                <footer class="inner">
+                  <p>Application maintained on <a href="https://github.com/chrislennon/Crypto-Touchbar-App">GitHub</a></p>
+                </footer>
+              </div>
+    
+    </body>
+    
+    </html>
+    
