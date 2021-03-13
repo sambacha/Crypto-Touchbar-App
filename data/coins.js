@@ -10,7 +10,7 @@ function data() {
 			"Ticker": "ADA",
 			"Icon": "ADA-alt",
 			"Colour": "386FCC",
-			"ShowDefault": true
+
 		},
 		{
 			"Name": "SushiSwap",
@@ -88,74 +88,6 @@ function data() {
 			"Colour": "912D61"
 		},
 		{
-			"Name": "BitBay",
-			"Ticker": "BAY",
-			"Icon": "BAY-alt",
-			"Colour": "449DDD"
-		},
-		{
-			"Name": "BC",
-			"Ticker": "BC",
-			"Icon": "BC",
-			"Colour": "FFFFFF"
-		},
-		{
-			"Name": "Bitcoin Cash",
-			"Ticker": "BCH",
-			"Icon": "BCH-alt",
-			"Colour": "719734",
-			"ShowDefault": true
-		},
-		{
-			"Name": "Bitcoin Gold",
-			"Ticker": "BTG",
-			"Icon": "../../../img/temp/btg",
-			"Colour": "D29C3D",
-			"ShowDefault": true
-		},
-		{
-			"Name": "Bitconnect",
-			"Ticker": "BCCOIN",
-			"Icon": "../../../img/temp/bcc",
-			"Colour": "EC8C37"
-		},
-		{
-			"Name": "ByteCoin",
-			"Ticker": "BCN",
-			"Icon": "BCN",
-			"Colour": "DE5185"
-		},
-		{
-			"Name": "BFT",
-			"Ticker": "BFT",
-			"Icon": "BFT",
-			"Colour": "FFFFFF"
-		},
-		{
-			"Name": "BreakoutCoin",
-			"Ticker": "BRK",
-			"Icon": "BRK-alt",
-			"Colour": "3060B6"
-		},
-		{
-			"Name": "Breakout Stake",
-			"Ticker": "BRX",
-			"Icon": "BRX-alt",
-			"Colour": "92A934"
-		},
-		{
-			"Name": "BitSend",
-			"Ticker": "BSD",
-			"Icon": "BSD-alt",
-			"Colour": "3B86E0"
-		},
-		{
-			"Name": "Bata",
-			"Ticker": "BTA",
-			"Icon": "BTA",
-			"Colour": "3E45C4"
-		},
-		{
 			"Name": "Binance Coin",
 			"Ticker": "BNB",
 			"Icon": "../../../img/temp/bnb",
@@ -201,10 +133,10 @@ function data() {
 		},
 		// D - 9
 		{
-			"Name": "Dash",
-			"Ticker": "DASH",
-			"Icon": "DASH",
-			"Colour": "3875B7",
+			"Name": "Compound",
+			"Ticker": "COMP",
+			"Icon": "../../../img/temp/comp",
+			"Colour": "00D395",
 			"ShowDefault": true
 		},
 		{
@@ -214,28 +146,32 @@ function data() {
 			"Colour": "FFFFFF"
 		},
 		{
-			"Name": "Decred",
-			"Ticker": "DCR",
-			"Icon": "DCR-alt",
-			"Colour": "69D4A6"
+			"Name": "Polygon",
+			"Ticker": "POLY",
+			"Icon": "../../../img/temp/polygon",
+			"Colour": "FFFFFF",
+			"ShowDefault": true
 		},
 		{
-			"Name": "Decent",
-			"Ticker": "DCT",
-			"Icon": "DCT-alt",
-			"Colour": "3F8E73"
+			"Name": "CurveFi",
+			"Ticker": "CURV",
+			"Icon": "../../../img/temp/curve",
+			"Colour": "FFFFFF",
+			"ShowDefault": true
 		},
 		{
-			"Name": "DigiByte",
-			"Ticker": "DGB",
-			"Icon": "DGB-alt",
-			"Colour": "2E67BF"
+			"Name": "Bulbasaur",
+			"Ticker": "BULB",
+			"Icon": "../../../img/temp/bulb",
+			"Colour": "00D395",
+			"ShowDefault": true
 		},
 		{
-			"Name": "Digix DAO",
-			"Ticker": "DGD",
-			"Icon": "DGD",
-			"Colour": "173747"
+			"Name": "Manifold Finance",
+			"Ticker": "COMP",
+			"Icon": "../../../img/temp/manifold",
+			"Colour": "0657F9",
+			"ShowDefault": true
 		},
 		{
 			"Name": "DGX",
@@ -254,7 +190,7 @@ function data() {
 			"Ticker": "DOGE",
 			"Icon": "DOGE",
 			"Colour": "B4A146",
-			"ShowDefault": true
+
 			
 		},
 		// E - 5
@@ -269,7 +205,7 @@ function data() {
 			"Ticker": "EOS",
 			"Icon": "EOS-alt",
 			"Colour": "828282",
-			"ShowDefault": true
+			
 		},
 		{
 			"Name": "ERC",
@@ -419,7 +355,7 @@ function data() {
 			"Ticker": "IOT",
 			"Icon": "IOTA-alt",
 			"Colour": "647782",
-			"ShowDefault": true
+
 		},
 		// J - 1
 		{
@@ -471,7 +407,7 @@ function data() {
 			"Ticker": "LTC",
 			"Icon": "LTC",
 			"Colour": "BEBEBE",
-			"ShowDefault": true
+
 		},
 		// M - 8
 		{
@@ -534,7 +470,7 @@ function data() {
 			"Ticker": "NEO",
 			"Icon": "NEO-alt",
 			"Colour": "B6D746",
-			"ShowDefault": true
+
 		},
 		{
 			"Name": "NeosCoin",
@@ -652,7 +588,7 @@ function data() {
 			"Ticker": "QTUM",
 			"Icon": "QTUM-alt",
 			"Colour": "558FB5",
-			"ShowDefault": true
+
 		},
 		// R - 7
 		{
@@ -889,14 +825,14 @@ function data() {
 			"Ticker": "XEM",
 			"Icon": "XEM",
 			"Colour": "6DCB85",
-			"ShowDefault": true
+	
 		},
 		{
 			"Name": "Monero",
 			"Ticker": "XMR",
 			"Icon": "XMR",
 			"Colour": "ED6C2D",
-			"ShowDefault": true
+	
 		},
 		{
 			"Name": "PrimeCoin",
@@ -909,7 +845,7 @@ function data() {
 			"Ticker": "XRP",
 			"Icon": "XRP",
 			"Colour": "3E90C5",
-			"ShowDefault": true
+
 		},
 		{
 			"Name": "Tezos",
