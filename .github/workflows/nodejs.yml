@@ -1,11 +1,11 @@
 # GitHub Nodejs CI
 name: nodejs
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ['ubuntu-latest', 'macos-latest']
 
     strategy:
       matrix:
@@ -21,7 +21,5 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm test
-          npm run-script deploy
         env:
           CI: true
