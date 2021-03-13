@@ -1,11 +1,11 @@
 # Info
-This application is published to GitHub pages at the following location: https://chrislennon.github.io/Crypto-Touchbar-App/
+This application is published to GitHub pages at the following location: https://sambacha.github.io/Crypto-Touchbar-App/
 
 ![](https://i.imgur.com/T9kSoMT.png)
 
 ## Instructions
 - Download and install [Better Touch Tool](https://folivora.ai). (requires version > v2.331)
-- Use the [Web App](https://chrislennon.github.io/Crypto-Touchbar-App/) to create your toolbar.
+- Use the [Web App](https://sambacha.github.io/Crypto-Touchbar-App/) to create your toolbar.
 - Click "Direct import to BTT" to export your selection to Better Touch Tool. (alternatively download & import the json file)
 
 ## What does this do?
@@ -16,7 +16,7 @@ This application is published to GitHub pages at the following location: https:/
 - BTT will then execute the python script with the parameters selected.
 
 ## Updates & Fixes
-For a listing of new features & fixes please check out the [releases](https://github.com/chrislennon/Crypto-Touchbar-App/releases) page.
+For a listing of new features & fixes please check out the [releases](https://github.com/sambacha/Crypto-Touchbar-App/releases) page.
 All features & bugs should also have a record in the issues page.
 
 ## Acknowledgements
@@ -28,7 +28,7 @@ Implementation was made significantly easier by [Better Touch Tool](https://foli
 
 ## Local Development & Contribution
 
-This is a standalone web application which is published already via [GitHub Pages](https://chrislennon.github.io/Crypto-Touchbar-App/).
+This is a standalone web application which is published already via [GitHub Pages](https://sambacha.github.io/Crypto-Touchbar-App/).
 
 To run this application locally:
 
@@ -36,11 +36,11 @@ To run this application locally:
 - run `npm start`
 - browse to `http://127.0.0.1:8080`
 
-The [wiki](https://github.com/chrislennon/Crypto-Touchbar-App/wiki) includes examples of common contributions such as adding a new output or a custom crypto icon.
+The [wiki](https://github.com/sambacha/Crypto-Touchbar-App/wiki) includes examples of common contributions such as adding a new output or a custom crypto icon.
 
 ## Suggestions & Donations
 
-Please raise an issue in the [GitHub Issues](https://github.com/chrislennon/Crypto-Touchbar-App/issues) page.
+Please raise an issue in the [GitHub Issues](https://github.com/sambacha/Crypto-Touchbar-App/issues) page.
 
 This is a hobby project which evolved over time, if you found this useful, or want to inspire development you can always donate to the addresses below:
 
