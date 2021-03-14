@@ -56,19 +56,19 @@ function data() {
 			"Name": "Polygon",
 			"Ticker": "POLY",
 			"Icon": "../../../img/temp/polygon",
-			"Colour": "FFFFFF",
+			"Colour": "333333",
 			"ShowDefault": true,
 		},
 		{
 			"Name": "curvefi",
 			"Ticker": "CRV",
 			"Icon": "../../../img/temp/curve",
-			"Colour": "FFFFFF",
+			"Colour": "333333",
 			"ShowDefault": true,
 		},
 		{
 			"Name": "Bulbasaur",
-			"Ticker": "BULB",
+			"Ticker": "DAI",
 			"Icon": "../../../img/temp/bulb",
 			"Colour": "00D395",
 			"ShowDefault": true,
@@ -102,5 +102,3 @@ function data() {
 		}
 	]
 };
-
-module.exports = _;
