@@ -16,7 +16,7 @@ function data() {
 			"Name": "SushiSwap",
 			"Ticker": "SUSHI",
 			"Icon": "../../../img/temp/sushi",
-			"Colour": "0E0F23",
+			"Colour": "F07AB2",
 			"ShowDefault": true
 		},
 		{
@@ -168,7 +168,7 @@ function data() {
 		},
 		{
 			"Name": "Manifold Finance",
-			"Ticker": "COMP",
+			"Ticker": "FOLD",
 			"Icon": "../../../img/temp/manifold",
 			"Colour": "0657F9",
 			"ShowDefault": true
