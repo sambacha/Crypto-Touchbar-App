@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Noto+Sans+JP&family=Roboto+Slab&family=Roboto:wght@300;400&display=swap');
 /* Touchbar */
 div.touchbar {
 	align-items: center;
@@ -28,7 +29,7 @@ div.touchbar .touchbar-widget {
 	border-radius: 5px;
 	color: #e7ebfd;
 	display: inline-block;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
 	font-size: 16px;
 	height: 30px;
 	justify-content: center;
@@ -110,7 +111,7 @@ svg.touchbar-crypto-icon {
     margin-right: 5px;
     border-radius: 5px;
     font-size: 16px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 #coins > div > input {
