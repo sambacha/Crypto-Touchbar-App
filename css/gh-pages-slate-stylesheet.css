@@ -5,6 +5,7 @@ by Jason Costello, @jsncostello
 
 @import url(normalize.css);
 @import url(pygment_trac.css);
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto+Slab&family=Roboto:wght@300;400&display=swap');
 
 /*******************************************************************************
 Theme Styles
@@ -20,13 +21,13 @@ body {
   color:#373737;
   background: #212121;
   font-size: 18px;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 10px 0;
   font-weight: 700;
   color:#222222;
@@ -74,7 +75,7 @@ h6 {
 }
 
 p {
-  font-family: "Roboto Slab",
+  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   margin: 0px 0 15px 0;
 }
@@ -102,7 +103,7 @@ strong {
   font-weight: bold;
 }
 
-/* img {
+img {
   position: relative;
   margin: 0 auto;
   max-width: 739px;
@@ -114,7 +115,7 @@ strong {
   -moz-box-shadow: 0 0 5px #ebebeb;
   -o-box-shadow: 0 0 5px #ebebeb;
   -ms-box-shadow: 0 0 5px #ebebeb;
-} */
+}
 
 p img {
   display: inline;
@@ -130,7 +131,7 @@ pre, code {
   color: #fff;
   background-color: #222;
 
-  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  font-family: 'Inconsolata', monospace;
   font-size: 14px;
 
 
